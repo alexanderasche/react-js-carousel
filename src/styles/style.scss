@@ -1,0 +1,47 @@
+.carousel {
+  position: relative;
+  overflow: hidden; 
+}
+.carousel-track {
+  display: flex;
+  transition-timing-function: ease-in-out;
+  max-height: 100%;
+}
+.carousel-slide {
+  position: relative;
+  flex: 1 0 100%; 
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+.carousel-prev, .carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: .75;
+  border: none;
+  outline: 0;
+  background-color: transparent;
+  transition: opacity .25s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    opacity: .35;
+  }
+  &::after {
+    font-size: 60px;
+    color: white;
+  }
+}
+.carousel-prev {
+  left: 20px;
+  &::after {
+    content: "‹";
+  }
+}
+.carousel-next {
+  right: 20px;
+  &::after {
+    content: "›";
+  }
+}
