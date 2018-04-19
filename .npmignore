@@ -1,0 +1,17 @@
+# Development
+examples
+node_modules
+specs
+src
+.babelrc
+.editorconfig
+.eslintrc
+.gitignore
+package-lock.json
+package.json
+
+# Dependencies
+node_modules
+
+# Editors
+.vscode

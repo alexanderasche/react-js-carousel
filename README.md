@@ -9,16 +9,17 @@
 **npm**
 
 ```bash
-npm install
+npm install @alexcasche/react-carousel
 ```
 
 **yarn**
 
 ```bash
-yarn install
+yarn install @alexcasche/react-carousel
 ```
 
 ### Example
+
 
 ### Props
 

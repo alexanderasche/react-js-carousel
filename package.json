@@ -1,5 +1,5 @@
 {
-  "name": "react-carousel-component",
+  "name": "@alexcasche/react-carousel",
   "version": "1.0.0",
   "description": "React Carousel Component",
   "main": "./lib/index.js",
