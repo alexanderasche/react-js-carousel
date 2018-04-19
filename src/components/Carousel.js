@@ -6,10 +6,10 @@ import {
   getStartState,
   getEndState,
   maxHeight, 
+  trimObject,
   renderControls 
 } from '../helpers';
 import '../style.css';
-
 
 class Carousel extends Component {
   constructor(props) {
@@ -48,20 +48,19 @@ class Carousel extends Component {
   doSlide = (direction, target) => {
     if(!this.state.sliding && !this.state.fading) {
       this.setState({ direction: direction }, () => {
-        this.setState(getStartState(this.state, this.props.options), () => {
+        this.setState(getStartState(this.state, this.props), () => {
           setTimeout(() => {
-            this.setState(getEndState(this.state, this.props.options));
-          }, this.props.options.speed);
+            this.setState(getEndState(this.state, this.props));
+          }, this.props.speed);
         });
       });
     }
   }
   render() {
-    const { children, options } = this.props;
     return (
       <div className="carousel" style={{height: this.state.height}} >
-        <Track slides={children} options={options} state={this.state}/>
-        {renderControls(options, this.events)}
+        <Track slides={this.props.children} options={this.props} state={this.state}/>
+        {renderControls(this.props, this.events)}
       </div>
     )
   }

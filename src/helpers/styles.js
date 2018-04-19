@@ -43,20 +43,44 @@ function slidingOffset(state) {
 }
 
 export function setSlideStyles(state, options, index) {
+  const { effect } = options;
   return {
-    position: options.effect === "slide" ? "" : "absolute", 
-    order: options.effect === "slide" ? setOrder(state, options, index) : null,
-    zIndex: options.effect === "slide" ? "" : setIndex(state, options, index)
+    order: effect === "slide" ? setOrder(state, index) : "",
+    position: effect === "fade" ? setPosition(state, index) : "relative",
+    zIndex: effect === "fade" ? setIndex(state, index) : "",
+    opacity: effect === "fade" ? setOpacity(state, index) : "",
+    transitionProperty: effect === "fade" && !state.fading ? "opacity" : "",
+    transitionDuration: effect === "fade" ? `${options.speed}ms` :  ""
   }
 }
-function setOrder(state, options, index) {
+function setOrder(state, index) {
   const { position, length } = state;
   if(atStart(position, length) && index === length - 1) return -1
   if(atEnd(position, length) && index === 0) return length
   return index
 }
-
-function setIndex(state, options, index) {
-  const { position, length, direction } = state;
-  return position - index;
+function setPosition(state, index) {
+  let position = "absolute";
+  if(state.position === index) position = "relative";
+  return position;
+}
+function setIndex(state, index) {
+  const { position, length, direction, target, fading } = state;
+  let zIndex = -2;
+  if(!fading) zIndex = position === index ? 0 : -2;
+  else {
+    if(direction === "none" && index === target) zIndex = -1
+    if(direction === "prev") {
+      if(index === position - 1 || atStart(position, length) && index === length - 1) zIndex = -1;
+    }
+    if(direction === 'next') {
+      if(index === position + 1 || atEnd(position, length) && index === 0) zIndex = -1;
+    }
+  }
+  return zIndex;
+}
+function setOpacity(state, index) {
+  const { position, length, direction, fading } = state;
+  const zIndex = setIndex(state, index);
+  return zIndex === -1 || zIndex === 0 ? 1 : 0;
 }

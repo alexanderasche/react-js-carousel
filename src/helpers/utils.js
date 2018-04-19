@@ -14,6 +14,17 @@ export function maxHeight(els) {
   return maxHeight;
 }
 
+export function trimObject(obj, keys) {
+  let newObj = {};
+  for(let key in obj) {
+    keys.indexOf(key) === -1 ? newObj[key] = obj[key] : ""
+  }
+  return newObj;
+}
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+
 export function skipEvent(state, options) {
   const { position, length, direction, sliding, fading } = state;
   if(!options.wrap) {
