@@ -24,6 +24,7 @@
   outline: 0;
   background-color: transparent;
   transition: opacity .25s ease-in-out;
+  text-shadow: 0 0 8px rgba(0,0,0,.35);
   &:hover {
     cursor: pointer;
     opacity: .35;
@@ -43,5 +44,33 @@
   right: 20px;
   &::after {
     content: "›";
+  }
+}
+
+.carousel-indicators {
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-indicator {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  outline: 0;
+  opacity: .65;
+  transition: opacity .25s ease-in-out;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.25);
+  &:hover {
+    cursor: pointer;
+    opacity: .45;
+  }
+  &.active {
+    opacity: 1;
   }
 }

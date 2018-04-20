@@ -55,8 +55,11 @@ export function setSlideStyles(state, options, index) {
 }
 function setOrder(state, index) {
   const { position, length } = state;
-  if(atStart(position, length) && index === length - 1) return -1
-  if(atEnd(position, length) && index === 0) return length
+  let order = index;
+  if(state.direction !== "none") {
+    if(atStart(position, length) && index === length - 1) index = -1
+    if(atEnd(position, length) && index === 0) index = length
+  }
   return index
 }
 function setPosition(state, index) {

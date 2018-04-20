@@ -6,8 +6,8 @@ import {
   getStartState,
   getEndState,
   maxHeight, 
-  trimObject,
-  renderControls 
+  renderControls,
+  renderIndicators
 } from '../helpers';
 import '../style.css';
 
@@ -25,7 +25,8 @@ class Carousel extends Component {
     }
     this.events = {
       goToPrev: this.goToPrev,
-      goToNext: this.goToNext
+      goToNext: this.goToNext,
+      goToIndex: this.goToIndex
     }
   }
   componentDidMount() {
@@ -48,7 +49,7 @@ class Carousel extends Component {
   doSlide = (direction, target) => {
     if(!this.state.sliding && !this.state.fading) {
       this.setState({ direction: direction }, () => {
-        this.setState(getStartState(this.state, this.props), () => {
+        this.setState(getStartState(this.state, this.props, target), () => {
           setTimeout(() => {
             this.setState(getEndState(this.state, this.props));
           }, this.props.speed);
@@ -61,6 +62,7 @@ class Carousel extends Component {
       <div className="carousel" style={{height: this.state.height}} >
         <Track slides={this.props.children} options={this.props} state={this.state}/>
         {renderControls(this.props, this.events)}
+        {renderIndicators(this.state, this.props, this.events)}
       </div>
     )
   }

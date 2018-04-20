@@ -1,7 +1,7 @@
 import React from 'react';
 import Slide from '../components/Slide';
 import Controls from '../components/Controls';
-import Indicators from '../components/Indicators';
+import Indicator from '../components/Indicator';
 
 export function renderSlides(state, options, slides) {
   return slides.map((slide, index, arr) => {
@@ -9,33 +9,40 @@ export function renderSlides(state, options, slides) {
       <Slide 
         key={index} 
         index={index}
-        slide={slide} 
-        options={options} 
         state={state} 
+        options={options}
+        slide={slide} 
       />
     );
   });
 }
 
 export function renderControls(options, events) {
-  const { showControls } = options;
-  if(showControls) {
+  if(options.showControls) {
     return ( 
-      <Controls 
-        events={events} 
-      />
+      <Controls events={events} />
     );
   }
 }
 
 export function renderIndicators(state, options, events) {
-  const { count } = state;
-  if(showIndicators) {
-    return ( 
-      <Indicators
-        events={events} 
-        options={options}
-      />
+  if(options.showIndicators) {
+    let indicators = [];
+    for(let i=0; i<state.length; i++) {
+      indicators.push(
+        <Indicator 
+          key={i} 
+          index={i} 
+          state={state} 
+          options={options}
+          events={events}
+        />
+      )
+    }
+    return (
+      <div className="carousel-indicators">
+        {indicators}
+      </div>
     );
   }
 }
