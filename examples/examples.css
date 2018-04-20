@@ -1,0 +1,20 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  padding: 0 40px;
+  background: #21242b;
+  color: #b2b3b5;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 48px;
+}
+.header .logo {
+  height: 30px;
+  position: relative;
+  top: 8px;
+  margin-right: 15px;
+}
+.header span {
+  color: #61dafb;
+}

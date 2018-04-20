@@ -2,7 +2,6 @@ import { atStart, atEnd, skipEvent } from './';
 
 export function getStartState(state, options, target) {
   if(!skipEvent(state, options)) {
-    console.log(target);
     return { 
       target: target !== "none" ? target : "none",
       sliding: options.effect === "slide" ? true : false,
