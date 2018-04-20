@@ -4,12 +4,8 @@ import Carousel from '../src/components/Carousel';
 
 const Example = () => {
 
-  const options = {
-    effect: "fade"
-  }
-
   return (
-    <Carousel {...options}>
+    <Carousel>
       <img src="./images/image_1.jpg" alt="image_1" />
       <img src="./images/image_2.jpg" alt="image_2" />
       <img src="./images/image_3.jpg" alt="image_3" />

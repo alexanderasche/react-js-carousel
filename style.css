@@ -24,7 +24,8 @@
   border: none;
   outline: 0;
   background-color: transparent;
-  transition: opacity .25s ease-in-out; }
+  transition: opacity .25s ease-in-out;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.35); }
   .carousel-prev:hover, .carousel-next:hover {
     cursor: pointer;
     opacity: .35; }
@@ -41,4 +42,28 @@
   right: 20px; }
   .carousel-next::after {
     content: "\203A"; }
+
+.carousel-indicators {
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+  justify-content: center; }
+
+.carousel-indicator {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  outline: 0;
+  opacity: .65;
+  transition: opacity .25s ease-in-out;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25); }
+  .carousel-indicator:hover {
+    cursor: pointer;
+    opacity: .45; }
+  .carousel-indicator.active {
+    opacity: 1; }
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/
