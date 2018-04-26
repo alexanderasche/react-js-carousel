@@ -10,10 +10,10 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js?$/,
-        loader: 'babel-loader'
+        use: 'babel-loader'
       },
       {
         test: /\.css/,
@@ -24,7 +24,7 @@ module.exports = {
       },
       { 
         test: /\.(png|jpg|gif|svg)$/,
-        loader: "url-loader" 
+        use: "url-loader" 
       }
     ]
   },
