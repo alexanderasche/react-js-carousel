@@ -2,6 +2,7 @@
 lib
 index.js
 style.css
+package
 
 # Dependencies
 node_modules
