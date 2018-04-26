@@ -3,6 +3,12 @@ import Track from './Track';
 import Controls from './Controls';
 import { propTypes, defaultProps} from '../props';
 import { 
+  initOrder,
+  initOffset,
+  initIndex,
+  slidePrep,
+  slideStart,
+  slideEnd,
   getStartState,
   getEndState,
   maxHeight, 
@@ -20,6 +26,10 @@ class Carousel extends Component {
       length: this.props.children.length,
       direction: "next",
       target: "none",
+      order: initOrder(this.props),
+      offset: initOffset(this.props),
+      index: initIndex(this.props),
+      ready: true,
       sliding: false,
       fading: false
     }
@@ -38,22 +48,28 @@ class Carousel extends Component {
     this.setState({ height: maxHeight(slides)});
   }
   goToPrev = () => {
-    this.doSlide("prev");
+    this.switchSlide("prev");
+    // this.doSlide("prev");
   }
   goToNext = () => {
-    this.doSlide("next");
+    this.switchSlide("next");
   }
   goToIndex = (index) => {
-    this.doSlide("none", index);
+    this.switchSlide("none", index);
   }
-  doSlide = (direction, target) => {
+  // switchSlides = (request) => {
+  //   console.log(slidePrep(this.state, this.props, "next"));
+  // }
+  switchSlide = (direction, target) => {
     if(!this.state.sliding && !this.state.fading) {
-      this.setState({ direction: direction }, () => {
-        this.setState(getStartState(this.state, this.props, target), () => {
-          setTimeout(() => {
-            this.setState(getEndState(this.state, this.props));
-          }, this.props.speed);
-        });
+      this.setState(slidePrep(this.state, this.props, direction, target), () => {
+        setTimeout(() => {
+          this.setState(slideStart(this.state, this.props, direction, target), () => {
+            setTimeout(() => {
+              this.setState(slideEnd(this.state, this.props, direction, target));
+            }, this.props.speed);
+          });
+        },);
       });
     }
   }

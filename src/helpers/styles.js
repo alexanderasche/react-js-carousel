@@ -14,12 +14,13 @@ function setAxis(options) {
   return options.orientation === "horizontal" ? "X" : "Y";
 }
 function setOffset(state) {
-  return !state.sliding ? stillOffset(state) : slidingOffset(state);
+  return state.offset;
+  // return !state.sliding ? stillOffset(state) : slidingOffset(state);
 }
 function stillOffset(state) {
-  const { position, length, direction } = state;
+  const { position, length, direction, ready } = state;
   let offset = position * -100;
-  if(direction !== 'none') {
+  if(ready && direction !== "none") {
     if(atStart(position, length)) offset = -100
     if(atEnd(position, length)) offset = (position - 1) * -100;
   }
@@ -28,7 +29,9 @@ function stillOffset(state) {
 function slidingOffset(state) {
   const { position, length, direction, target } = state;
   let offset; 
-  if(direction === 'none') offset = target * -100;
+  if(direction === 'none') {
+    offset = target * -100;
+  } 
   if(direction === 'prev') {
     offset = (position - 1) * -100
     if(atStart(position, length)) offset = 0
@@ -43,25 +46,36 @@ function slidingOffset(state) {
 }
 
 export function setSlideStyles(state, options, index) {
+  const Zindex = setIndex(state, index);
+  const opacity = setOpacity(state, index);
   const { effect } = options;
   return {
     order: effect === "slide" ? setOrder(state, index) : "",
     position: effect === "fade" ? setPosition(state, index) : "relative",
-    zIndex: effect === "fade" ? setIndex(state, index) : "",
-    opacity: effect === "fade" ? setOpacity(state, index) : "",
+    zIndex: effect === "fade" ? Zindex : "",
+    opacity: effect === "fade" ? opacity : "",
     transitionProperty: effect === "fade" && !state.fading ? "opacity" : "",
     transitionDuration: effect === "fade" ? `${options.speed}ms` :  ""
   }
 }
 function setOrder(state, index) {
-  const { position, length } = state;
-  let order = index;
-  if(state.direction !== "none") {
-    if(atStart(position, length) && index === length - 1) index = -1
-    if(atEnd(position, length) && index === 0) index = length
-  }
-  return index
+  const { order } = state;
+  return order[index];
+  // const { position, length, direction, ready, sliding } = state;
+  // let order = index;
+  // if(ready) {
+  //   if(direction !== "none") {
+  //     if(atStart(position, length) && index === length - 1) index = -1
+  //     if(atEnd(position, length) && index === 0) index = length
+  //   }
+  // }
+  // return index;
 }
+function stillOrder(state, index) {
+  const { position, length } = state;
+}
+
+
 function setPosition(state, index) {
   let position = "absolute";
   if(state.position === index) position = "relative";

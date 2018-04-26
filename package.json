@@ -9,6 +9,7 @@
     "css": "node-sass ./src/styles/style.scss -o ./src/ && postcss ./src/style.css --use autoprefixer -d ./src",
     "watch": "nodemon -e scss -x \"npm run css\"",
     "dev": "concurrently \"webpack --config ./examples/webpack.config.js\" \"open ./examples/index.html\"",
+    "gh-pages": "git subtree push --prefix examples origin gh-pages",
     "clean": "rimraf lib",
     "build": "cross-env babel src --out-dir lib",
     "copy": "cp src/style.css lib/",
