@@ -1,5 +1,6 @@
 # Builds
-lib
+index.js
+style.css
 
 # Dependencies
 node_modules
