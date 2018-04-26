@@ -2,13 +2,14 @@
 examples
 node_modules
 specs
-lib
+src
 .babelrc
 .editorconfig
 .eslintrc
 .gitignore
 package-lock.json
 package.json
+webpack.config.js
 
 # Dependencies
 node_modules

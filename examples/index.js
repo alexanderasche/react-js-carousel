@@ -3,6 +3,8 @@ import ReactDom from 'react-dom'
 import Carousel from '../src/components/Carousel';
 import Header from './components/Header';
 
+console.log(Carousel);
+
 class Example extends Component {
   constructor() {
     super();

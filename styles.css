@@ -1,20 +1,20 @@
-.carousel {
+._carousel_4ncvg_1 {
   position: relative;
   overflow: hidden; }
 
-.carousel-track {
+._carousel-track_4ncvg_5 {
   display: flex;
   transition-timing-function: ease-in-out;
   max-height: 100%; }
 
-.carousel-slide {
+._carousel-slide_4ncvg_10 {
   flex: 1 0 100%;
   height: 100%; }
-  .carousel-slide img {
+  ._carousel-slide_4ncvg_10 img {
     width: 100%;
     display: block; }
 
-.carousel-prev, .carousel-next {
+._carousel-prev_4ncvg_17, ._carousel-next_4ncvg_17 {
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -25,31 +25,31 @@
   background-color: transparent;
   transition: opacity .25s ease-in-out;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.35); }
-  .carousel-prev:hover, .carousel-next:hover {
+  ._carousel-prev_4ncvg_17:hover, ._carousel-next_4ncvg_17:hover {
     cursor: pointer;
     opacity: .35; }
-  .carousel-prev::after, .carousel-next::after {
+  ._carousel-prev_4ncvg_17::after, ._carousel-next_4ncvg_17::after {
     font-size: 60px;
     color: white; }
 
-.carousel-prev {
+._carousel-prev_4ncvg_17 {
   left: 20px; }
-  .carousel-prev::after {
+  ._carousel-prev_4ncvg_17::after {
     content: "\2039"; }
 
-.carousel-next {
+._carousel-next_4ncvg_17 {
   right: 20px; }
-  .carousel-next::after {
+  ._carousel-next_4ncvg_17::after {
     content: "\203A"; }
 
-.carousel-indicators {
+._carousel-indicators_4ncvg_45 {
   width: 100%;
   position: absolute;
   bottom: 20px;
   display: flex;
   justify-content: center; }
 
-.carousel-indicator {
+._carousel-indicator_4ncvg_45 {
   width: 15px;
   height: 15px;
   margin: 0 5px;
@@ -60,9 +60,8 @@
   opacity: .65;
   transition: opacity .25s ease-in-out;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25); }
-  .carousel-indicator:hover {
+  ._carousel-indicator_4ncvg_45:hover {
     cursor: pointer;
     opacity: .45; }
-  .carousel-indicator.active {
+  ._carousel-indicator_4ncvg_45._active_4ncvg_66 {
     opacity: 1; }
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/
