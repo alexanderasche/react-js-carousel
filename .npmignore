@@ -10,6 +10,7 @@ src
 package-lock.json
 package.json
 webpack.config.js
+rollup.config.js
 
 # Dependencies
 node_modules
